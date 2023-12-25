@@ -1,0 +1,60 @@
+<%= render 'layouts/public_header' %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, "メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password,  "パスワード" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "パスワード確認用" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :nickname, "ニックネーム" %><br>
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sex, "性別" %><br>
+    <%= f.radio_button :sex, Customer.sexes.key(0) %>
+    <%= f.label :sex_man, Customer.sexes_i18n[:man] %>
+
+    <%= f.radio_button :sex, Customer.sexes.key(1) %>
+    <%= f.label :sex_woman, Customer.sexes_i18n[:woman]%>
+
+    <%= f.radio_button :sex, Customer.sexes.key(2) %>
+    <%= f.label :sex_etcetera, Customer.sexes_i18n[:etcetera]%>
+  </div>
+
+  <div class="field">
+   <div class="field">
+    <%= f.label :birthday, "生年月日" %><br>
+    <%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2016,
+    include_blank: true, use_two_digit_numbers: true},
+    {class: "input-tab birthday-select"}%>
+  </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :cat_number, "飼っている猫の数" %><br>
+    <%= f.text_field :cat_number %>匹
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+<% end %>
+<h2>既に登録済みの方</h2>
+<%= link_to "こちら",new_customer_session_path %>からログインしてください

@@ -1,0 +1,49 @@
+<header>
+  <div class="p-1 border-bottom border-secondary">
+    <nav>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <%= link_to "ねこらいふ", root_path, class: "btn btn-outline-dark btn-lg"%>
+          </div>
+          <div class="col">
+            <div class="d-flex flex-row-reverse bd-highlight">
+              <ul class="nav pull-right nav-pills">
+                <% if customer_signed_in? %>
+                  <li>
+                    <%= link_to "マイページ", customer_path(current_customer), class: "btn btn-outline-dark"%>
+                  </li>
+                  <li>
+                    <%= link_to "ねこ日記", diaries_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "Q&A", questions_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_customer_session_path, class: "btn btn-outline-dark", method: :delete %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "About", about_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "ねこ日記", diaries_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "Q&A", questions_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-dark" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
