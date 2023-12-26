@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     patch "customers/:id/withdraw"=>"customers#withdraw"
     resources :diaries do
       resources :diary_comments, only: [:create, :destroy]
-      resources :favorites, only: [:create, :destroy]
+      resource :favorite, only: [:create, :destroy]
     end
     resources :questions, only: [:index, :new, :create, :show, :destroy] do
       resources :answer, only: [:new, :create]

@@ -1,11 +1,17 @@
 <%= render 'layouts/public_header' %>
-<h2>新規投稿</h2>
+<h2>新しい質問</h2>
 <%= form_with model: @question do |f| %>
-<h4>タイトル</h4>
-  <%= f.text_field :title %>
+<h4>質問カテゴリ</h4>
+<%= f.select :category,[["飼い方・しつけ", "飼い方・しつけ"], ["病気", "病気"], ["健康管理", "健康管理"], ["生態", "生態"], ["その他", "その他"]] %>
 
-  <h4>本文</h4>
-  <%= f.text_area :body %>
+<h4>質問のタイトル</h4>
+<%= f.text_field :title %>
 
-  <%= f.submit '投稿' %>
+<h4>質問の本文</h4>
+<%= f.text_area :body %>
+
+<h4>参考画像</h4>
+<%= f.file_field :image, accept: "image/*" %>
+
+<%= f.submit '投稿' %>
 <% end %>

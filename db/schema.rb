@@ -88,12 +88,13 @@ ActiveRecord::Schema.define(version: 2023_12_21_040013) do
   create_table "diary_comments", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "diary_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "custmoer_id", null: false
+    t.integer "customer_id", null: false
     t.integer "diary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

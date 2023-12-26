@@ -1,2 +1,13 @@
 <%= render 'layouts/public_header' %>
 <%= link_to "質問する", public_questions_new_path %>
+<% @questions.each do |question| %>
+  <div>
+    <%= link_to question_path(question.id) do %>
+      <%= image_tag question.get_image %>
+    <% end %>
+    <p>投稿ユーザー画像：<%= image_tag question.customer.get_profile_image(100,100) %></p>
+    <p>タイトル：<%= question.title %></p>
+    <p>説明：<%= question.body %></p>
+    <p>ユーザーネーム：<%= question.customer.nickname %></p>
+  </div>
+<% end %>

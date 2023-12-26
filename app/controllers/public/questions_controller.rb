@@ -1,5 +1,6 @@
 class Public::QuestionsController < ApplicationController
   def index
+    @questions = Question.all
   end
 
   def new
@@ -14,10 +15,11 @@ class Public::QuestionsController < ApplicationController
   end
 
   def show
+    @question = Question.find(params[:id])
   end
 
   private
   def question_params
-    params.require(:question).permit(:title, :body, :image)
+    params.require(:question).permit(:title, :body, :image, :customer_id)
   end
 end

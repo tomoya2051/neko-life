@@ -1,1 +1,43 @@
 <%= render 'layouts/public_header' %>
+<div>
+  <%= image_tag @diary.get_image %>
+  <p>タイトル：<%= @diary.title %></p>
+  <p>説明：<%= @diary.body %></p>
+  <p>投稿ユーザー画像：<%= image_tag @diary.customer.get_profile_image(100,100) %></p>
+  <p>ユーザーネーム：<%= @diary.customer.nickname %></p>
+  <p>投稿日：<%= @diary.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @diary.customer == current_customer %>
+    <%= link_to "削除", diary_path(@diary), method: :delete %>
+  <% end %>
+  <% if @diary.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to diary_favorite_path(@diary), method: :delete do %>
+        ♥<%= @diary.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to diary_favorite_path(@diary), method: :post do %>
+        ♡<%= @diary.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<div>
+  <p>コメント件数：<%= @diary.diary_comments.count %></p>
+  <% @diary.diary_comments.each do |diary_comment| %>
+    <p><%= image_tag diary_comment.customer.get_profile_image(100,100) %></p>
+    <%= diary_comment.customer.nickname %>
+    <%= diary_comment.created_at.strftime('%Y/%m/%d') %><%= diary_comment.comment %>
+    <% if diary_comment.customer == current_customer %>
+      <%= link_to "削除する", diary_diary_comment_path(diary_comment.diary, diary_comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@diary, @diary_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに入力" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

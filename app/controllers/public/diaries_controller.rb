@@ -1,5 +1,6 @@
 class Public::DiariesController < ApplicationController
   def index
+    @diaries = Diary.all
   end
 
   def new
@@ -14,9 +15,17 @@ class Public::DiariesController < ApplicationController
   end
 
   def show
+    @diary = Diary.find(params[:id])
+    @diary_comment = DiaryComment.new
   end
 
   def edit
+  end
+
+  def destroy
+    diary = Diary.find(params[:id])
+    diary.destroy
+    redirect_to diaries_path
   end
 
   private

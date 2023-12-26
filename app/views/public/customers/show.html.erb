@@ -1,1 +1,20 @@
+<%= flash[:notice] %>
 <%= render 'layouts/public_header' %>
+<div>
+  <h3><%= @customer.nickname %></h3>
+  <%= image_tag @customer.get_profile_image(100,100) %>
+  <p><%= link_to "プロフィール編集", edit_customer_path %></p>
+</div>
+
+<% @diaries.each do |diary| %>
+<div>
+  <%= link_to diary_path(diary.id) do %>
+    <%= image_tag diary.get_image %>
+  <% end %>
+  <!--<p>投稿ユーザー画像：<%= image_tag diary.customer.get_profile_image(100,100) %></p>-->
+  <p>タイトル：<%= diary.title %></p>
+  <p>説明：<%= diary.body %></p>
+  <p>ユーザーネーム：<%= diary.customer.nickname %></p>
+  <p><%= link_to "#{diary.diary_comments.count} コメント", diary_path(diary.id) %></p>
+</div>
+<% end %>

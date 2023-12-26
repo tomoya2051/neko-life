@@ -1,2 +1,27 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h2>会員一覧</h2>
+<table class="table">
+  <thead>
+    <tr class="table-secondary">
+      <th>会員id</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+<tbody>
+<% @customers.each do |customer| %>
+<tr>
+  <td><%= customer.id %></td>
+  <td><%= link_to customer.nickname, edit_admin_customer_path(customer.id)%></td>
+  <td><%= customer.email %></td>
+  <td><% if customer.is_active  %>
+  <p class="text-success">有効</p>
+  <% else %>
+  <p>退会</p>
+  <% end %>
+  </td>
+</tr>
+<% end %>
+ </tbody>
+</table>
+<%= paginate @customers %>

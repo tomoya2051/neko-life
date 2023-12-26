@@ -5,14 +5,6 @@
           man: "男性"
           woman: "女性"
           etcetera: "その他"
-      question:
-        category:
-          breeding: "飼い方・しつけ"
-          disease: "病気"
-          health: "健康管理"
-          ecology: "生態"
-          etcetera: "その他"
-
   activerecord:
     errors:
       messages:
