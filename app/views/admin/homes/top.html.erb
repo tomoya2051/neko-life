@@ -3,7 +3,7 @@
   <thead>
     <tr class="table-secondary">
       <th>会員id</th>
-      <th>氏名</th>
+      <th>ニックネーム</th>
       <th>メールアドレス</th>
       <th>ステータス</th>
     </tr>
@@ -12,7 +12,7 @@
 <% @customers.each do |customer| %>
 <tr>
   <td><%= customer.id %></td>
-  <td><%= link_to customer.nickname, edit_admin_customer_path(customer.id)%></td>
+  <td><%= link_to customer.nickname, admin_customer_path(customer.id)%></td>
   <td><%= customer.email %></td>
   <td><% if customer.is_active  %>
   <p class="text-success">有効</p>

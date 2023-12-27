@@ -1,0 +1,9 @@
+<% @questions.each do |question| %>
+  <%= link_to admin_question_path(question.id) do %>
+    <%= image_tag question.get_image %>
+  <% end %>
+  <p>タイトル：<%= question.title %></p>
+  <p>説明：<%= question.body %></p>
+  <p>ユーザーネーム：<%= question.customer.nickname %></p>
+  <p><%#= link_to "#{diary.diary_comments.count} コメント", admin_diary_path(diary.id) %></p>
+<% end %>

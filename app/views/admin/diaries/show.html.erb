@@ -1,0 +1,19 @@
+<div>
+  <%= image_tag @diary.get_image %>
+  <p>タイトル：<%= @diary.title %></p>
+  <p>説明：<%= @diary.body %></p>
+  <p>投稿ユーザー画像：<%= image_tag @diary.customer.get_profile_image(100,100) %></p>
+  <p>ユーザーネーム：<%= @diary.customer.nickname %></p>
+  <p>投稿日：<%= @diary.created_at.strftime('%Y/%m/%d') %></p>
+  <%= link_to "削除", admin_diary_path(@diary), method: :delete %>
+</div>
+
+<div>
+  <p>コメント件数：<%= @diary.diary_comments.count %></p>
+  <% @diary.diary_comments.each do |diary_comment| %>
+    <p><%= image_tag diary_comment.customer.get_profile_image(100,100) %></p>
+    <%= diary_comment.customer.nickname %>
+    <%= diary_comment.created_at.strftime('%Y/%m/%d') %><%= diary_comment.comment %>
+      <%= link_to "削除する", diary_diary_comment_path(diary_comment.diary, diary_comment), method: :delete %>
+  <% end %>
+</div>

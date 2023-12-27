@@ -1,13 +1,9 @@
 <%= render 'layouts/public_header' %>
-<%= link_to "質問する", public_questions_new_path %>
+<%= link_to "質問する", new_question_path %>
+<h4>受付中の質問</h4>
 <% @questions.each do |question| %>
-  <div>
-    <%= link_to question_path(question.id) do %>
-      <%= image_tag question.get_image %>
-    <% end %>
-    <p>投稿ユーザー画像：<%= image_tag question.customer.get_profile_image(100,100) %></p>
-    <p>タイトル：<%= question.title %></p>
-    <p>説明：<%= question.body %></p>
-    <p>ユーザーネーム：<%= question.customer.nickname %></p>
-  </div>
+  <p><%= link_to question.title, question_path(question.id) %></p>
+  <p>ユーザーネーム：<%= question.customer.nickname %></p>
+  <p>投稿日：<%= question.created_at.strftime('%Y/%m/%d') %></p>
+  <p>回答件数：<%#= @post_image.post_comments.count %></p>
 <% end %>

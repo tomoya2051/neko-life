@@ -1,2 +1,60 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2> <%= @customer.nickname %> さんの会員詳細</h2>
+      <table>
+        <tbody>
+          <tr>
+          <th>プロフィール画像</th>
+          <td></td>
+          <td><%= image_tag @customer.get_profile_image(100,100) %></td>
+        </tr>
+        <tr>
+          <th>会員id</th>
+          <td></td>
+          <td><%= @customer.id%></td>
+        </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <td></td>
+          <td><%= @customer.nickname %></td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td></td>
+          <td><%= @customer.sex%></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td></td>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>生年月日</th>
+          <td></td>
+          <td><%= @customer.date_of_birth%></td>
+        </tr>
+
+        <tr>
+          <th>飼っている猫の数</th>
+          <td></td>
+          <td><%= @customer.cat_number%>匹</td>
+        </tr>
+
+        <tr>
+          <th>会員ステータス</th>
+          <td></td>
+          <td><% if @customer.is_active %>
+                <p class="text-success">有効</p>
+              <% else %>
+                <p>退会</p>
+              <% end %>
+          </td>
+        </tr>
+      </table>
+      <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
+      <%= link_to "日記投稿一覧", admin_index_diaries_user_path(@customer), class: "btn btn-success" %>
+      <%= link_to "質問投稿一覧", admin_index_questions_user_path(@customer), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

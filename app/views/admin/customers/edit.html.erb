@@ -1,2 +1,48 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>会員情報編集</h2>
+      <%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>会員id</td>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.text_field :email, autocomplete: "email" %></td>
+          </tr>
+
+          <tr>
+            <td>生年月日</td>
+            <td><%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2016,
+                include_blank: true, use_two_digit_numbers: true},
+                {class: "input-tab birthday-select"}%></td>
+          </tr>
+
+          <tr>
+            <td>飼っている猫の数</td>
+            <td><%= f.text_field :cat_number, autocomplete: "cat_number" %></td>
+          </tr>
+
+          <tr>
+            <td>会員ステータス</td>
+            <td><%=f.radio_button :is_active, true %></td>
+            <td><%=f.label :is_active,"有効" %></td>
+            <td><%=f.radio_button :is_active, false %></td>
+            <td><%=f.label :is_active,"退会" %></td>
+          </tr>
+          <tr>
+            <td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
