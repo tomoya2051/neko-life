@@ -8,10 +8,10 @@
 
 <% @favorites.each do |favorite| %>
   <div>
-    <%= link_to diary_path(favorite.id) do %>
+    <%= link_to diary_path(favorite.diary_id) do %>
       <%= image_tag favorite.get_image %>
     <% end %>
-    <p><%= link_to favorite.diary.title, diary_path(favorite.id) %></p>
+    <p><%= link_to favorite.diary.title, diary_path(favorite.diary_id) %></p>
     <p>説明：<%= favorite.diary.body %></p>
     <p>ユーザーネーム：<%= favorite.customer.nickname %></p>
     <p><%= link_to "#{favorite.diary.diary_comments.count} コメント", diary_path(favorite.id) %></p>
