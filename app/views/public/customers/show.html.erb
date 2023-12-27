@@ -6,14 +6,14 @@
   <p><%= link_to "プロフィール編集", edit_customer_path %></p>
 </div>
 
-<% @diaries.each do |diary| %>
+<% @favorites.each do |favorite| %>
   <div>
-    <%= link_to diary_path(diary.id) do %>
-      <%= image_tag diary.get_image %>
+    <%= link_to diary_path(favorite.id) do %>
+      <%= image_tag favorite.get_image %>
     <% end %>
-    <p>タイトル：<%= diary.title %></p>
-    <p>説明：<%= diary.body %></p>
-    <p>ユーザーネーム：<%= diary.customer.nickname %></p>
-    <p><%= link_to "#{diary.diary_comments.count} コメント", diary_path(diary.id) %></p>
+    <p><%= link_to favorite.diary.title, diary_path(favorite.id) %></p>
+    <p>説明：<%= favorite.diary.body %></p>
+    <p>ユーザーネーム：<%= favorite.customer.nickname %></p>
+    <p><%= link_to "#{favorite.diary.diary_comments.count} コメント", diary_path(favorite.id) %></p>
   </div>
 <% end %>

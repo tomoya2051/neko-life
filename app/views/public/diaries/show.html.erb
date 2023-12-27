@@ -12,13 +12,13 @@
   <% if @diary.favorited_by?(current_customer) %>
     <p>
       <%= link_to diary_favorite_path(@diary), method: :delete do %>
-        ♥<%= @diary.favorites.count %> いいね
+        ♥<%= @diary.favorites.count %> ブックマークをはずす
       <% end %>
     </p>
     <% else %>
     <p>
       <%= link_to diary_favorite_path(@diary), method: :post do %>
-        ♡<%= @diary.favorites.count %> いいね
+        ♡<%= @diary.favorites.count %> ブックマーク
       <% end %>
     </p>
   <% end %>

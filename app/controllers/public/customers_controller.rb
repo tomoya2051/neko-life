@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
-    @diaries = @customer.diaries
+    @favorites = Favorite.where(customer_id: current_customer.id)
   end
 
   def edit
