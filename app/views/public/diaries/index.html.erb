@@ -1,4 +1,5 @@
 <%= render 'layouts/public_header' %>
+<%= render 'layouts/search', q: @q, url: diaries_path %>
 <%= link_to "新規投稿",new_diary_path %>
 <% @diaries.each do |diary| %>
   <div>
@@ -6,9 +7,9 @@
       <%= image_tag diary.get_image %>
     <% end %>
     <p>投稿ユーザー画像：<%= image_tag diary.customer.get_profile_image(100,100) %></p>
-    <p>ショップ名：<%= diary.title %></p>
-    <p>説明：<%= diary.body %></p>
-    <p>ユーザーネーム：<%= diary.customer.nickname %></p>
+    <p>タイトル：<%= diary.title %></p>
+    <p>本文：<%= diary.body %></p>
+    <p>ニックネーム：<%= diary.customer.nickname %></p>
     <p><%= link_to "#{diary.diary_comments.count} コメント", diary_path(diary.id) %></p>
   </div>
 <% end %>

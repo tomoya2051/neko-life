@@ -1,6 +1,7 @@
 class Public::DiariesController < ApplicationController
   def index
-    @diaries = Diary.all
+    @q = Diary.ransack(params[:q])
+    @diaries = @q.result(distinct: true)
   end
 
   def new

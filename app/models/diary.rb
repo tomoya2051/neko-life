@@ -13,6 +13,10 @@ class Diary < ApplicationRecord
     image
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["body", "created_at", "customer_id", "id", "title", "updated_at"]
+  end
+
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end

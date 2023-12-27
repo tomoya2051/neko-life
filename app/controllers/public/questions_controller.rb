@@ -1,6 +1,7 @@
 class Public::QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true)
   end
 
   def new
@@ -16,6 +17,7 @@ class Public::QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers
   end
 
   private

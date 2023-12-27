@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
+    get "answer_index"=>"questions#answer_index"
     get "about"=>"homes#about"
     get "customers/:id/confirm"=>"customers#confirm"
+    patch '/questions/:question_id/answers', to: 'answers#create', as: 'update_answer'
     resources :customers, only: [:show, :edit, :update]
     patch "customers/:id/withdraw"=>"customers#withdraw"
     resources :diaries do

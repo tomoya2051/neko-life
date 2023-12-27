@@ -1,9 +1,12 @@
 <%= render 'layouts/public_header' %>
+<%= render 'layouts/search', q: @q, url: questions_path %>
 <%= link_to "質問する", new_question_path %>
 <h4>受付中の質問</h4>
 <% @questions.each do |question| %>
   <p><%= link_to question.title, question_path(question.id) %></p>
+  <p>質問カテゴリ：<%= question.category %></p>
   <p>ユーザーネーム：<%= question.customer.nickname %></p>
   <p>投稿日：<%= question.created_at.strftime('%Y/%m/%d') %></p>
   <p>回答件数：<%#= @post_image.post_comments.count %></p>
 <% end %>
+r

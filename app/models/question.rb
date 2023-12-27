@@ -11,4 +11,8 @@ class Question < ApplicationRecord
     end
     image
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["category", "title", "body"]
+  end
 end
