@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2023_12_21_040013) do
 
   create_table "questions", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "category", default: 0, null: false
+    t.string "category", null: false
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false

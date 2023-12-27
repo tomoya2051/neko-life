@@ -15,4 +15,8 @@ class Question < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["category", "title", "body"]
   end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["answers", "customer", "image_attachment", "image_blob"]
+  end
 end

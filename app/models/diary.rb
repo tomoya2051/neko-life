@@ -17,6 +17,10 @@ class Diary < ApplicationRecord
     ["body", "created_at", "customer_id", "id", "title", "updated_at"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["customer", "diary_comments", "favorites", "image_attachment", "image_blob"]
+  end
+
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end

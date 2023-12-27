@@ -11,6 +11,7 @@ class Public::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.customer_id = current_customer.id
+    @question.category = params[:question][:category]
     @question.save
     redirect_to questions_path
   end
