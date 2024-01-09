@@ -9,7 +9,7 @@
 <% @favorites.each do |favorite| %>
   <div>
     <%= link_to diary_path(favorite.diary_id) do %>
-      <%= image_tag favorite.get_image %>
+      <%= image_tag favorite.diary.get_image %>
     <% end %>
     <p><%= link_to favorite.diary.title, diary_path(favorite.diary_id) %></p>
     <p>説明：<%= favorite.diary.body %></p>
