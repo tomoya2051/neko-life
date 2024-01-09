@@ -1,5 +1,5 @@
 <%= render 'layouts/public_header' %>
-<%= render 'layouts/search', q: @q, url: diaries_path %>
+<%= render 'diaries_search', q: @q, url: diaries_path %>
 <%= link_to "新規投稿",new_diary_path %>
 <% @diaries.each do |diary| %>
   <div>
