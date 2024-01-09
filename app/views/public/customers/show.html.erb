@@ -5,7 +5,7 @@
   <%= image_tag @customer.get_profile_image(100,100) %>
   <p><%= link_to "プロフィール編集", edit_customer_path %></p>
 </div>
-
+<h3>いいね（ブックマーク）一覧</h3>
 <% @favorites.each do |favorite| %>
   <div>
     <%= link_to diary_path(favorite.diary_id) do %>
